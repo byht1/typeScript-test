@@ -2,7 +2,7 @@ import axios from 'axios';
 import { FooObj } from './../type/type';
 
 const idName: number[] = [
-  840, 978, 124, 756, 203, 826, 376, 578, 752, 985, 392,
+  840, 978, 124, 756, 203, 826, 376, 392, 578, 752, 985,
 ];
 const currencyСode: string[] = [
   'USD',
@@ -12,10 +12,10 @@ const currencyСode: string[] = [
   'CZK',
   'GBP',
   'ILS',
+  'JPY',
   'NOK',
   'SEK',
   'PLZ',
-  'JPY',
 ];
 
 // USD -- 840 Евро
@@ -61,4 +61,25 @@ export const NBY = async () => {
       }
     }
   });
+};
+
+export const Mono = async () => {
+  const serverDataURL1 = 'https://api.monobank.ua/bank/currency';
+  const server = await axios.get(serverDataURL1);
+  const data = await server.data;
+  return data.filter(
+    (x: { currencyCodeA: number | string; currencyCodeB: number }) => {
+      for (let i = 0; i < idName.length; i += 1) {
+        if (x.currencyCodeA === idName[i] && x.currencyCodeB === 980) {
+          x.currencyCodeA = currencyСode[i];
+          return x;
+        }
+      }
+      // for (const id of idName) {
+      //   if (x.currencyCodeA === id && x.currencyCodeB === 980) {
+      //     return x;
+      //   }
+      // }
+    }
+  );
 };

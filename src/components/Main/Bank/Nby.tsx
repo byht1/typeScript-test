@@ -1,33 +1,46 @@
-import React from 'react';
+import React, { FC, useState, useEffect } from 'react';
+import { NBY } from '../../../server/api';
+import { FooObj } from './../../../type/type';
+import { Table, Th, Td } from './Banl.styled';
 
-export const Nby = () => {
+export const Nby: FC = () => {
+  const [nby, setNby] = useState<FooObj[]>([]);
+
+  useEffect(() => {
+    server();
+  }, []);
+
+  async function server() {
+    const data: FooObj[] = await NBY();
+    setNby(data);
+  }
   return (
     <div>
       <img
         src="https://bank.gov.ua/frontend/content/logo.png?v=4"
         alt="Логотип НБУ"
       />
-      {/* <Table>
+      <Table>
         <tbody>
           <tr>
-            <Th>Купити</Th>
-            <Th>Продати</Th>
+            <Th>Офіційний курс</Th>
+            <Th>На дату</Th>
           </tr>
         </tbody>
-        {list.map(({ ccy, buy, sale }) => {
+        {nby.map(({ cc, rate, exchangedate }: any) => {
           return (
-            <tbody key={sale + buy}>
+            <tbody key={rate + 'nby'}>
               <tr>
-                <Td colSpan={2}>{ccy}</Td>
+                <Td colSpan={2}>{cc}</Td>
               </tr>
               <tr>
-                <Td>{buy}</Td>
-                <Td>{sale}</Td>
+                <Td>{rate}</Td>
+                <Td>{exchangedate}</Td>
               </tr>
             </tbody>
           );
         })}
-      </Table> */}
+      </Table>
     </div>
   );
 };

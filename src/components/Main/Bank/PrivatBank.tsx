@@ -1,12 +1,19 @@
-import React, { FC } from 'react';
+import React, { FC, useState, useEffect } from 'react';
+import { privatBank } from '../../../server/api';
 import { FooObj } from '../../../type/type';
 import { Table, Th, Td } from './Banl.styled';
 
-interface IProp {
-  list: FooObj[];
-}
+export const PrivatBank: FC = () => {
+  const [privatBanc, setPrivatBanc] = useState<FooObj[]>([]);
 
-export const PrivatBank: FC<IProp> = ({ list }) => {
+  useEffect(() => {
+    serverPrivat();
+  }, []);
+
+  async function serverPrivat() {
+    const data: FooObj[] = await privatBank();
+    setPrivatBanc(data);
+  }
   return (
     <div>
       <img
@@ -20,7 +27,7 @@ export const PrivatBank: FC<IProp> = ({ list }) => {
             <Th>Продати</Th>
           </tr>
         </tbody>
-        {list.map(({ ccy, buy, sale }) => {
+        {privatBanc.map(({ ccy, buy, sale }) => {
           return (
             <tbody key={sale + buy}>
               <tr>
