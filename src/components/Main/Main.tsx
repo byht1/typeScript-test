@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Container } from '../../App.styled';
-import { privatBank } from '../../server/api';
-import { Bank } from './Bank/Bank';
-import { Title, TitleDecoration } from './Main.styled';
+import { NBY, privatBank } from '../../server/api';
+import { PrivatBank } from './Bank/PrivatBank';
+import { Title, TitleDecoration, GrigBox } from './Main.styled';
 import { FooObj } from './../../type/type';
+import { Nby } from './Bank/Nby';
 
 export const Main = () => {
   const [privatBanc, setPrivatBanc] = useState<FooObj[]>([]);
+  const [nby, setNby] = useState<FooObj[]>([]);
 
   useEffect(() => {
     serverPrivat();
@@ -14,7 +16,9 @@ export const Main = () => {
 
   async function serverPrivat() {
     const data: FooObj[] = await privatBank();
+    const data2 = await NBY();
     setPrivatBanc(data);
+    setNby(data2);
   }
 
   return (
@@ -24,13 +28,10 @@ export const Main = () => {
           <Title>
             Курс <TitleDecoration>UAH</TitleDecoration> (гривні)
           </Title>
-          <div>
-            <img
-              src="https://api.privatbank.ua/img/logo-api.svg"
-              alt="Логотип ПриватБанка"
-            />
-            <Bank list={privatBanc} />
-          </div>
+          <GrigBox>
+            <PrivatBank list={privatBanc} />
+            <Nby />
+          </GrigBox>
         </Container>
       </section>
     </main>

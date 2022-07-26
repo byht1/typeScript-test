@@ -11,3 +11,8 @@ export const Title = styled.h2`
 export const TitleDecoration = styled.span`
   font-family: 'Orbitron', sans-serif;
 `;
+
+export const GrigBox = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+`;

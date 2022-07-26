@@ -6,18 +6,23 @@ interface IProp {
   list: FooObj[];
 }
 
-export const Bank: FC<IProp> = ({ list }) => {
-  console.log('🚀 ~ list', list);
+export const PrivatBank: FC<IProp> = ({ list }) => {
   return (
-    <Table>
-      <tbody>
-        <tr>
-          <Th>Купити</Th>
-          <Th>Продати</Th>
-        </tr>
+    <div>
+      <img
+        src="https://api.privatbank.ua/img/logo-api.svg"
+        alt="Логотип ПриватБанка"
+      />
+      <Table>
+        <tbody>
+          <tr>
+            <Th>Купити</Th>
+            <Th>Продати</Th>
+          </tr>
+        </tbody>
         {list.map(({ ccy, buy, sale }) => {
           return (
-            <>
+            <tbody key={sale + buy}>
               <tr>
                 <Td colSpan={2}>{ccy}</Td>
               </tr>
@@ -25,10 +30,10 @@ export const Bank: FC<IProp> = ({ list }) => {
                 <Td>{buy}</Td>
                 <Td>{sale}</Td>
               </tr>
-            </>
+            </tbody>
           );
         })}
-      </tbody>
-    </Table>
+      </Table>
+    </div>
   );
 };
