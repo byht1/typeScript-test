@@ -1,7 +1,7 @@
 import React, { FC, useState, useEffect } from 'react';
 import { Mono } from '../../../server/api';
 import { FooObj } from './../../../type/type';
-import { Table, Th, Td } from './Banl.styled';
+import { Table, Th, Td, IconMono } from './Banl.styled';
 
 export const MonoBank: FC = () => {
   const [mono, setMono] = useState<FooObj[]>([]);
@@ -12,15 +12,11 @@ export const MonoBank: FC = () => {
 
   async function server() {
     const data: FooObj[] = await Mono();
-    console.log('🚀 ~ data', data);
     setMono(data);
   }
   return (
     <div>
-      <img
-        src="https://asset.brandfetch.io/id-CBRc8NA/idvFFbpiTN.svg"
-        alt="Логотип НБУ"
-      />
+      <IconMono />
       <Table>
         <tbody>
           <tr>

@@ -12,7 +12,27 @@ export const TitleDecoration = styled.span`
   font-family: 'Orbitron', sans-serif;
 `;
 
+export const WraperMain = styled.div`
+  @media screen and (min-width: 1000px) {
+    margin: auto 0;
+    display: grid;
+    grid-template-columns: 550px 1fr;
+    grid-auro-rows: 1fr;
+    align-items: center;
+    gap: 50px;
+  }
+`;
+
 export const GrigBox = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-auro-rows: 1fr;
+  gap: 20px;
+  align-items: end;
+`;
+
+export const CalcBox = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;

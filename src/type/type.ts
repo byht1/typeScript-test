@@ -3,4 +3,5 @@ export interface FooObj {
   buy: string;
   ccy: string;
   sale: string;
+  rates?: string;
 }

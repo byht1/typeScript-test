@@ -1,22 +1,8 @@
 import axios from 'axios';
 import { FooObj } from './../type/type';
 
-const idName: number[] = [
-  840, 978, 124, 756, 203, 826, 376, 392, 578, 752, 985,
-];
-const currencyСode: string[] = [
-  'USD',
-  'EUR',
-  'CAD',
-  'CHF',
-  'CZK',
-  'GBP',
-  'ILS',
-  'JPY',
-  'NOK',
-  'SEK',
-  'PLZ',
-];
+const idName: number[] = [840, 978];
+const currencyСode: string[] = ['USD', 'EUR'];
 
 // USD -- 840 Евро
 // EUR -- 978 Доллар США
@@ -30,31 +16,24 @@ const currencyСode: string[] = [
 // PLZ -- 985 Польский злотый
 // SEK -- 752 Шведская крона
 
+type ICacl = (value: string, to: string, result: string) => Promise<number>;
+
 export const privatBank = async () => {
   const serverDataURL1 =
     'https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=5';
-  const serverDataURL2 =
-    'https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=4';
-
-  let privat: FooObj[] = [];
-  const server1 = await axios.get(serverDataURL1);
-  const server2 = await axios.get(serverDataURL2);
-  const data1: FooObj[] = await server1.data.filter(
+  const server = await axios.get(serverDataURL1);
+  const data: FooObj[] = await server.data.filter(
     (x: FooObj, i: number, arr: []) => arr.length - 1 !== i
   );
-  const data2: FooObj[] = await server2.data.filter(
-    (x: FooObj, i: number, arr: []) => arr.length - 1 !== i
-  );
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  return (privat = [...data1, ...data2]);
+  return data;
 };
 
 export const NBY = async () => {
   const serverDataURL1 =
     'https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json';
-  const server1 = await axios.get(serverDataURL1);
-  const data1 = await server1.data;
-  return data1.filter((x: { r030: number }) => {
+  const server = await axios.get(serverDataURL1);
+  const data = await server.data;
+  return data.filter((x: { r030: number }) => {
     for (const id of idName) {
       if (x.r030 === id) {
         return x;
@@ -75,11 +54,42 @@ export const Mono = async () => {
           return x;
         }
       }
-      // for (const id of idName) {
-      //   if (x.currencyCodeA === id && x.currencyCodeB === 980) {
-      //     return x;
-      //   }
-      // }
     }
   );
+};
+
+export const worldData = async () => {
+  const serverDataURL1 =
+    'https://api.exchangerate.host/latest?base=UAH&symbols=EUR,USD';
+  const server = await axios.get(serverDataURL1);
+  const data = await server.data;
+  const dataKey: string[] = await Object.keys(data.rates);
+  const dataValue: number[] = await Object.values(data.rates);
+  let newData = [];
+  for (let i = 0; i < dataKey.length; i++) {
+    newData.push({
+      name: dataKey[i],
+      value: (1 / dataValue[i]).toFixed(2),
+      date: data.date.split('-').reverse().join('.'),
+    });
+  }
+
+  return newData;
+};
+
+export const cacl: ICacl = async (value, to, result) => {
+  const serverDataURL1 = `https://api.exchangerate.host/convert?from=${to}&to=${result}`;
+  const server = await axios.get(serverDataURL1);
+  const data = await server.data.result;
+  return data * Number(value);
+  // return data.filter(
+  //   (x: { currencyCodeA: number | string; currencyCodeB: number }) => {
+  //     for (let i = 0; i < idName.length; i += 1) {
+  //       if (x.currencyCodeA === idName[i] && x.currencyCodeB === 980) {
+  //         x.currencyCodeA = currencyСode[i];
+  //         return x;
+  //       }
+  //     }
+  //   }
+  // );
 };
