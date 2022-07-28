@@ -1,7 +1,7 @@
 import React, { FC, useState, useEffect } from 'react';
 // import { useForm } from 'react-hook-form';
 import { cacl } from '../../../server/api';
-import { CalcFormBox } from './Calc.styled';
+import { CalcFormBox, Input, Div, Text, Span, Select } from './Calc.styled';
 
 const valueName: string[] = [
   'UAH',
@@ -14,7 +14,6 @@ const valueName: string[] = [
   'ILS',
   'JPY',
   'NOK',
-  'PLZ',
   'SEK',
 ];
 
@@ -72,27 +71,27 @@ export const Calc: FC = () => {
     setCurrencyTo(newValue);
     dataServer(valueCalcOne, 1, newValue, currencyResult);
   };
+
   const onChangeCurrencyResult = (
     event: React.ChangeEvent<HTMLSelectElement>
   ) => {
     const newValue: string = event.target.value;
     setCurrencyResult(newValue);
-    dataServer(valueCalcOne, 2, currencyTo, newValue);
+    console.log('currencyTo', currencyTo);
+    console.log('currencyTo', currencyTo);
+    dataServer(valueCalcTwo, 2, currencyTo, newValue);
   };
 
   return (
     <CalcFormBox>
       <form>
         <div>
-          <input
+          <Input
             type="number"
             value={valueCalcOne}
             onChange={onChangeValueCalcOne}
           />
-          <select
-            onChange={event => onChangeCurrencyTo(event)}
-            value={currencyTo}
-          >
+          <Select onChange={onChangeCurrencyTo} value={currencyTo}>
             {valueName.map(x => {
               return (
                 <option key={x + '1'} value={x}>
@@ -100,18 +99,15 @@ export const Calc: FC = () => {
                 </option>
               );
             })}
-          </select>
+          </Select>
         </div>
-        <div>
-          <input
+        <Div>
+          <Input
             value={valueCalcTwo}
             type="number"
             onChange={onChangeValueCalcTwo}
           />
-          <select
-            onChange={event => onChangeCurrencyResult(event)}
-            value={currencyResult}
-          >
+          <Select onChange={onChangeCurrencyResult} value={currencyResult}>
             {valueName.map(x => {
               return (
                 <option key={x + '2'} value={x}>
@@ -119,9 +115,14 @@ export const Calc: FC = () => {
                 </option>
               );
             })}
-          </select>
-        </div>
-        {course !== 0 && <p>{course}</p>}
+          </Select>
+        </Div>
+        {course !== 0 && (
+          <Text>
+            <Span>За курсом: </Span>
+            {course}
+          </Text>
+        )}
       </form>
     </CalcFormBox>
   );

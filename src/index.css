@@ -8,6 +8,10 @@
   --text-dark: #fff;
 }
 
+option {
+  background-color: var(--topic-dark);
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
