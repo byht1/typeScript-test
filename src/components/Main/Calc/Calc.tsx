@@ -32,44 +32,51 @@ export const Calc: FC = () => {
   const [course, setСourse] = useState<number>(0);
 
   useEffect(() => {
-    dataServer(valueCalcOne);
-  }, []);
+    dataServer(currencyTo, currencyResult);
+    calcDataOne();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currencyTo, currencyResult]);
+
+  useEffect(() => {
+    calcDataOne();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [course]);
 
   async function dataServer(
-    value: string,
-    n: number = 1,
     to: string = currencyTo,
     result: string = currencyResult
   ) {
-    const data = await cacl(value, to, result);
-    const course = Number((1 / data.result).toFixed(2));
+    const data = await cacl(to, result);
+    const course = Number((1 / data.result).toFixed(5));
 
     setСourse(course);
-    if (n === 1) {
-      const total: number = (await data.result) * Number(value);
-      setValueCalcTwo(total.toFixed(2));
-      return;
-    }
-    const total: number = await (Number(value) / data.result);
-    setValueCalcOne(total.toFixed(2));
+  }
+
+  function calcDataOne(value: string = valueCalcOne) {
+    const total: number = Number(value) / course;
+    setValueCalcTwo(total.toFixed(5));
+  }
+
+  function calcDataTwo(value: string = valueCalcTwo) {
+    const total: number = Number(value) / course;
+    setValueCalcOne(total.toFixed(5));
   }
 
   const onChangeValueCalcOne = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newValue: string = event.target.value;
     setValueCalcOne(newValue);
-    dataServer(newValue);
+    calcDataOne(newValue);
   };
 
   const onChangeValueCalcTwo = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newValue: string = event.target.value;
     setValueCalcTwo(newValue);
-    dataServer(newValue, 2);
+    calcDataTwo(newValue);
   };
 
   const onChangeCurrencyTo = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const newValue: string = event.target.value;
     setCurrencyTo(newValue);
-    dataServer(valueCalcOne, 1, newValue, currencyResult);
   };
 
   const onChangeCurrencyResult = (
@@ -77,9 +84,6 @@ export const Calc: FC = () => {
   ) => {
     const newValue: string = event.target.value;
     setCurrencyResult(newValue);
-    console.log('currencyTo', currencyTo);
-    console.log('currencyTo', currencyTo);
-    dataServer(valueCalcTwo, 2, currencyTo, newValue);
   };
 
   return (

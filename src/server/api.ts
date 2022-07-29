@@ -16,8 +16,6 @@ const currencyСode: string[] = ['USD', 'EUR'];
 // PLZ -- 985 Польский злотый
 // SEK -- 752 Шведская крона
 
-type ICacl = (value: string, to: string, result: string) => number;
-
 export const privatBank = async () => {
   const serverDataURL1 =
     'https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=5';
@@ -33,6 +31,7 @@ export const NBY = async () => {
     'https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json';
   const server = await axios.get(serverDataURL1);
   const data = await server.data;
+  // eslint-disable-next-line array-callback-return
   return data.filter((x: { r030: number }) => {
     for (const id of idName) {
       if (x.r030 === id) {
@@ -77,11 +76,7 @@ export const worldData = async () => {
   return newData;
 };
 
-export const cacl = async (
-  value: string = '1',
-  to: string = 'UAH',
-  result: string = 'USD'
-) => {
+export const cacl = async (to: string = 'UAH', result: string = 'USD') => {
   const serverDataURL1 = `https://api.exchangerate.host/convert?from=${to}&to=${result}`;
   const server = await axios.get(serverDataURL1);
   const data = await server.data;
