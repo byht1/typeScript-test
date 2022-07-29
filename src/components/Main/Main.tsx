@@ -1,17 +1,8 @@
 import React from 'react';
 import { Container } from '../../App.styled';
-import { PrivatBank } from './Bank/PrivatBank';
-import { MonoBank } from './Bank/MonoBank';
-import {
-  Title,
-  TitleDecoration,
-  GrigBox,
-  WraperMain,
-  CalcBox,
-} from './Main.styled';
-import { Nby } from './Bank/Nby';
-import { World } from './Bank/World';
+import { Title, TitleDecoration, WraperMain, CalcBox } from './Main.styled';
 import { Calc } from './Calc/Calc';
+import { Banks } from './Bank/Banks';
 
 export const Main = () => {
   return (
@@ -22,12 +13,13 @@ export const Main = () => {
             Курс <TitleDecoration>UAH</TitleDecoration> (гривні)
           </Title>
           <WraperMain>
-            <GrigBox>
+            <Banks />
+            {/* <GrigBox>
               <World />
               <Nby />
               <PrivatBank />
               <MonoBank />
-            </GrigBox>
+            </GrigBox> */}
             <CalcBox>
               <Calc />
             </CalcBox>
