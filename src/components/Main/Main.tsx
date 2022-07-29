@@ -14,12 +14,6 @@ export const Main = () => {
           </Title>
           <WraperMain>
             <Banks />
-            {/* <GrigBox>
-              <World />
-              <Nby />
-              <PrivatBank />
-              <MonoBank />
-            </GrigBox> */}
             <CalcBox>
               <Calc />
             </CalcBox>

@@ -2,10 +2,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
 
-:root {
+html[dark-theme='wihte'] {
   --topic-dark: #031321;
   --border-dark: rgba(255, 255, 255, 0.05);
   --text-dark: #fff;
+}
+
+html[dark-theme='dark'] {
+  --topic-dark: #fff;
+  --border-dark: rgba(167, 157, 157, 0.05);
+  --text-dark: #000;
 }
 
 option {
