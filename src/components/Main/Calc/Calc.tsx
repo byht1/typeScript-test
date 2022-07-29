@@ -38,8 +38,8 @@ export const Calc: FC = () => {
   async function dataServer(
     value: string,
     n: number = 1,
-    to: string = 'UAH',
-    result: string = 'USD'
+    to: string = currencyTo,
+    result: string = currencyResult
   ) {
     const data = await cacl(value, to, result);
     const course = Number((1 / data.result).toFixed(2));
