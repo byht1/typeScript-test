@@ -7,11 +7,15 @@ export const CalcFormBox = styled.div`
   align-items: center;
   width: 100%;
   height: 100%;
-  border-bottom: 1px solid var(--border-dark);
+  border: 1px solid var(--border-dark);
+  border-radius: 10px;
   background-color: var(--topic-dark);
-  box-shadow: 0px 5px 12px -4px rgba(255, 255, 255, 0.92);
-  -webkit-box-shadow: 0px 5px 12px -4px rgba(255, 255, 255, 0.92);
-  -moz-box-shadow: 0px 5px 12px -4px rgba(255, 255, 255, 0.92);
+  box-shadow: 0px 5px 12px -4px var(--shadow);
+  -webkit-box-shadow: 0px 5px 12px -4px var(--shadow);
+  -moz-box-shadow: 0px 5px 12px -4px var(--shadow);
+
+  transition: color 250ms linear, background-color 250ms linear,
+    border 250ms linear;
 `;
 
 export const Input = styled.input`
@@ -20,7 +24,7 @@ export const Input = styled.input`
   margin-right: 15px;
   border: none;
 
-  border-bottom: 1px solid #fff;
+  border-bottom: 1px solid var(--border-dark);
 
   font-family: 'Poppins', sans-serif;
   font-size: 20px;
@@ -29,6 +33,9 @@ export const Input = styled.input`
   color: var(--text-dark);
 
   background-color: transparent;
+
+  transition: color 250ms linear, background-color 250ms linear,
+    border 250ms linear;
 
   &::-webkit-outer-spin-button,
   &::-webkit-inner-spin-button {
@@ -38,6 +45,7 @@ export const Input = styled.input`
 
 export const Select = styled.select`
   border-radius: 7px;
+  border-color: var(--border-dark);
 
   font-family: 'Poppins', sans-serif;
   font-size: 20px;
@@ -46,6 +54,9 @@ export const Select = styled.select`
   color: var(--text-dark);
 
   background-color: transparent;
+
+  transition: color 250ms linear, background-color 250ms linear,
+    border 250ms linear;
 
   &:hover {
     cursor: pointer;
@@ -63,8 +74,15 @@ export const Text = styled.p`
   text-align: center;
   font-weight: 400;
   color: var(--text-dark);
+
+  transition: color 250ms linear, background-color 250ms linear,
+    border 250ms linear;
 `;
 
 export const Span = styled.span`
   font-weight: 700;
+  color: var(--logo-dark);
+
+  transition: color 250ms linear, background-color 250ms linear,
+    border 250ms linear;
 `;

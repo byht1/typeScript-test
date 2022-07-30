@@ -2,20 +2,41 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
 
+html {
+  transition: color 5000ms linear, background-color 5000ms linear,
+    border-color 5000ms linear;
+}
+
 html[dark-theme='wihte'] {
-  --topic-dark: #031321;
-  --border-dark: rgba(255, 255, 255, 0.05);
+  --header-color: #50d4c3;
+  --topic-dark: #33393f;
+  --border-dark: #50d4c3;
+  --background: #50d4c3;
   --text-dark: #fff;
+  --logo-dark: #fff;
+  --shadow: rgba(255, 255, 255, 0.92);
+  --togle: #ffffff;
 }
 
 html[dark-theme='dark'] {
+  --header-color: #419fd9;
+  --topic-dark: #ffffff;
+  --border-dark: #419fd9;
+  --background: #419fd9;
+  --text-dark: #8393a3;
+  --logo-dark: #000000;
+  --shadow: rgba(0, 0, 0, 0.92);
+  --togle: #000000;
+}
+/* html[dark-theme='dark'] {
   --topic-dark: #fff;
   --border-dark: rgba(167, 157, 157, 0.05);
   --text-dark: #000;
-}
+} */
 
 option {
   background-color: var(--topic-dark);
+  border-color: var(--border-dark);
 }
 
 input[type='number'] {

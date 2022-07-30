@@ -14,7 +14,7 @@ export const TitleDecoration = styled.span`
 
 export const WraperMain = styled.div`
   @media screen and (min-width: 1000px) {
-    margin: auto 0;
+    margin: 30px 0 0 0;
     display: grid;
     grid-template-columns: 550px 1fr;
     grid-auro-rows: 1fr;

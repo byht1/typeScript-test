@@ -1,5 +1,13 @@
 import styled from 'styled-components';
 import { ReactComponent as IconMonoBanc } from '../../../icon/icon-mono.svg';
+import { ReactComponent as IconNbuBank } from '../../../icon/NBU.svg';
+
+export const IconNbu = styled(IconNbuBank)`
+  color: var(--logo-dark);
+
+  transition: color 250ms linear, background-color 250ms linear,
+    border 250ms linear;
+`;
 
 export const GrigBox = styled.div`
   display: grid;
@@ -10,21 +18,30 @@ export const GrigBox = styled.div`
 `;
 
 export const IconMono = styled(IconMonoBanc)`
-  color: #fff;
+  color: var(--logo-dark);
+
+  transition: color 250ms linear, background-color 250ms linear,
+    border 250ms linear;
 `;
 
 export const Table = styled.table`
   width: 100%;
   margin-top: 10px;
-  border: 1px solid var(--text-dark);
+  border: 2px solid var(--border-dark);
   border-collapse: collapse;
+
+  transition: color 250ms linear, background-color 250ms linear,
+    border 250ms linear;
 `;
 
 export const Th = styled.th`
   font-weight: bold;
   padding: 5px;
-  background: #efefef;
-  border: 1px solid var(--text-dark);
+  background: var(--background);
+  border: 2px solid var(--border-dark);
+
+  transition: color 250ms linear, background-color 250ms linear,
+    border 250ms linear;
 `;
 
 export const Td = styled.td`
@@ -32,8 +49,11 @@ export const Td = styled.td`
   font-size: 18px;
   text-align: center;
   color: var(--text-dark);
-  border: 1px solid var(--text-dark);
+  border: 2px solid var(--border-dark);
   padding: 5px;
+
+  transition: color 250ms linear, background-color 250ms linear,
+    border 250ms linear;
 `;
 
 export const Span = styled.span`

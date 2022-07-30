@@ -9,8 +9,14 @@ export const Header: FC = () => {
     document.documentElement.setAttribute('dark-theme', theme);
   }, [theme]);
 
-  function abs() {
-    setTheme('dark');
+  function themeTogle() {
+    if (theme === 'dark') {
+      setTheme('wihte');
+    }
+    if (theme === 'wihte') {
+      setTheme('dark');
+    }
+
     setCheked(prev => !prev);
   }
 
@@ -18,7 +24,7 @@ export const Header: FC = () => {
     <HeaderBox>
       <Logo>CurrencyCalculator</Logo>
       <BoxButton>
-        <Button onClick={abs}>
+        <Button onClick={themeTogle}>
           <Colo cheked={cheked} />
         </Button>
       </BoxButton>
