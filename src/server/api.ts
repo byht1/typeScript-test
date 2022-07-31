@@ -130,3 +130,16 @@ export const cacl = async (to: string = 'UAH', result: string = 'USD') => {
   const data = await server.data;
   return data;
 };
+
+// export const serverDataStat = async () => {
+//   // to: string, result: string
+//   const serverURL =
+//     'https://api.exchangerate.host/timeseries?start_date=2022-01-01&end_date=2022-07-30&format=JSON&base=USD&symbols=UAH';
+//   const server = await axios.get(serverURL);
+//   const data = await server.data.rates;
+//   const key = Object.keys(data);
+//   const v: IDataStat[] = Object.values(data);
+//   const value = v.map(x => Number(Object.values(x).join('')));
+
+//   return { date: key, value };
+// };
