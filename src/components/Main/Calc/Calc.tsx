@@ -58,7 +58,7 @@ export const Calc: FC = () => {
   }
 
   function calcDataTwo(value: string = valueCalcTwo) {
-    const total: number = Number(value) / course;
+    const total: number = Number(value) * course;
     setValueCalcOne(total.toFixed(5));
   }
 
