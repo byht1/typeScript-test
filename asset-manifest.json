@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/currency-calculator/static/css/main.be550e53.css",
-    "main.js": "/currency-calculator/static/js/main.4fa3c0b6.js",
-    "static/media/icon-mvf.svg": "/currency-calculator/static/media/icon-mvf.bdcbc832aa19a2d81270d770497ad639.svg",
-    "static/media/NBU.svg": "/currency-calculator/static/media/NBU.8f4089938eced17dd86ea6adb6c41294.svg",
-    "static/media/icon-mono.svg": "/currency-calculator/static/media/icon-mono.9bd30ca833b4eb87a3a07f784cd67cbb.svg",
-    "index.html": "/currency-calculator/index.html",
-    "main.be550e53.css.map": "/currency-calculator/static/css/main.be550e53.css.map",
-    "main.4fa3c0b6.js.map": "/currency-calculator/static/js/main.4fa3c0b6.js.map"
+    "main.css": "/typeScript-test/static/css/main.4389d87d.css",
+    "main.js": "/typeScript-test/static/js/main.c90f1448.js",
+    "static/media/icon-mvf.svg": "/typeScript-test/static/media/icon-mvf.bdcbc832aa19a2d81270d770497ad639.svg",
+    "static/media/NBU.svg": "/typeScript-test/static/media/NBU.8f4089938eced17dd86ea6adb6c41294.svg",
+    "static/media/icon-mono.svg": "/typeScript-test/static/media/icon-mono.9bd30ca833b4eb87a3a07f784cd67cbb.svg",
+    "index.html": "/typeScript-test/index.html",
+    "main.4389d87d.css.map": "/typeScript-test/static/css/main.4389d87d.css.map",
+    "main.c90f1448.js.map": "/typeScript-test/static/js/main.c90f1448.js.map"
   },
   "entrypoints": [
-    "static/css/main.be550e53.css",
-    "static/js/main.4fa3c0b6.js"
+    "static/css/main.4389d87d.css",
+    "static/js/main.c90f1448.js"
   ]
 }
